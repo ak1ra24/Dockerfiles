@@ -1,0 +1,20 @@
+version: '2'
+services:
+  kea:
+    build: ./dhcpd
+    restart: always
+    network_mode: host
+    depends_on:
+    - kea-db
+  kea-db:
+    build: ./db
+    restart: always
+    ports:
+    - 3306:3306
+    environment:
+      MYSQL_DATABASE: dhcpdb
+      MYSQL_ROOT_PASSWORD: xxxxx
+    volumes:
+    - kea-db-vol:/var/lib/mysql
+volumes:
+  kea-db-vol:
