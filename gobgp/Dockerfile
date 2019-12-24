@@ -2,6 +2,7 @@ FROM akiranet24/frr
 
 WORKDIR /root
 ENV GO111MODULE on
+ENV PATH $PATH:/root/go/bin
 
 RUN apt install -y software-properties-common \
  && add-apt-repository ppa:longsleep/golang-backports \
